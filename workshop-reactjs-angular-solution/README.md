@@ -49,5 +49,10 @@ npm install ipaddr.js
   - Book Detail view
     - Implement the save button: It should update the book's title
     - Implement the goBack button
+
+## Hints
+    - Use Axios in ReactJS. Axios is a Promise based HTTP client for the browser and node.js
+    - In Angular use Promises or Observables (RxJS). See for a detailed solution: https://angular.io/tutorial
+   
    
  
