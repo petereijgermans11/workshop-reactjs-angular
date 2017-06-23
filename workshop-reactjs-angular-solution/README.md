@@ -1,5 +1,5 @@
 
-# Workshop reactJS and Angular
+# Workshop ReactJS and Angular
 Hey guys, tonight you'll have to build this app:
 
 ![Bookstore gif](https://i.imgur.com/iD69CC9.gif)
@@ -7,8 +7,7 @@ Hey guys, tonight you'll have to build this app:
 Using either react or angular, choose your weapon ⚔
 ## Getting started
 ```bash
-git clone https://github.com/petereijgermans11/workshop-reactjs-angular
-cd ./hackjam-frameworks-marathon
+git clone https://github.com/petereijgermans11/workshop-reactjs-angular.git
 
 # If you want to use React
 cd ./react-app
@@ -22,7 +21,7 @@ yarn start
 
 Development Server is running on http://localhost:4200
 
-# Install extra:
+# Extra install:
 npm install ipaddr.js
 
 
