@@ -33,12 +33,12 @@ npm install ipaddr.js
 ## Todo:
 - Fix all the bugs before building new features
 
-**ERROR 1:**
+# ERROR 1:
 
 Uncaught Error: Component AppComponent is not part of any NgModule 
 or the module has not been imported into your module
 
-# Solution:
+**Solution:**
 
 Add the following in @NgModule in the ‘declarations-section’:
 
@@ -49,7 +49,7 @@ declarations: [
 
 ———————————
 
-**ERROR 2:**
+# ERROR 2:
 
 Unhandled Promise rejection: Template parse errors:
 'router-outlet' is not a known element:
@@ -61,7 +61,7 @@ Unhandled Promise rejection: Template parse errors:
 "): ng:///AppModule/AppComponent.html@6:2 ; Zone: <root> ; 
 
 
-# Solution:
+**Solution:**
 
 Add the following in @NgModule in the ‘imports-section’:
 
@@ -72,7 +72,7 @@ Add the following in @NgModule in the ‘imports-section’:
 
 ———--------
 
-**ERROR 3:**
+# ERROR 3:
 
 compiler.es5.js:1694 Uncaught Error: Template parse errors:
 Can't bind to 'ngForIn' since it isn't a known property of 'li'. ("
@@ -83,25 +83,25 @@ Can't bind to 'ngForIn' since it isn't a known property of 'li'. ("
       (click)="onSe"): ng:///AppModule/BooksComponent.html@10:6
 Property binding ngForIn not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations".
 
-# Solution:
+**Solution:**
 
 Change the following in the ‘books.component.html’:
 
 Wrong:
-<li *ngFor="let book in books | async"
+li *ngFor="let book in books | async"
 
 Right:
-<li *ngFor="let book of books | async"
+li *ngFor="let book of books | async"
 
 ———————————
 
-**ERROR 4:**
+# ERROR 4:
 
 ERROR Error: not implemented
     at AppService.webpackJsonp.66.AppService.getBooks (app.service.ts:18)
     at BooksComponent.webpackJsonp.113.BooksComponent.ngOnInit
 
-# Solution:
+**Solution:**
 
 In the book.service.ts —> implement the method getBooks()
 
@@ -117,11 +117,11 @@ In the book.service.ts —> implement the method getBooks()
 
 —————————
 
-**ERROR 5:**
+# ERROR 5:
 
 ERROR Error: Uncaught (in promise): Error: No provider for Http!
 
-# Solution
+**Solution:**
 
 Import the following in @NgModule:
 
@@ -138,11 +138,11 @@ And add the following in the ‘imports-section’:
 
 ————
 
-**ERROR 6:**
+# ERROR 6:
 
 Fix all onClick events in all templates
 
-# Solution:
+**Solution:**
 
 >> click --> (click)
 
