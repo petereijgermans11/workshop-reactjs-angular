@@ -23,11 +23,7 @@ export class BookService {
 
   /** GET books from the server */
   getBooks (): Observable<Book[]> {
-    return this.http.get<Book[]>(this.booksUrl)
-      .pipe(
-        tap(books => this.log(`fetched books`)),
-        catchError(this.handleError('getBooks', []))
-      );
+     // FIXME
   }
 
   /** GET book by id. Return `undefined` when id not found */
@@ -47,10 +43,7 @@ export class BookService {
   /** GET book by id. Will 404 if id not found */
   getBook(id: number): Observable<Book> {
     const url = `${this.booksUrl}/${id}`;
-    return this.http.get<Book>(url).pipe(
-      tap(_ => this.log(`fetched book id=${id}`)),
-      catchError(this.handleError<Book>(`getBook id=${id}`))
-    );
+    // FIXME
   }
 
   /* GET books whose name contains search term */
@@ -59,10 +52,7 @@ export class BookService {
       // if not search term, return empty book array.
       return of([]);
     }
-    return this.http.get<Book[]>(`api/books/?name=${term}`).pipe(
-      tap(_ => this.log(`found books matching "${term}"`)),
-      catchError(this.handleError<Book[]>('searchBooks', []))
-    );
+    // FIXME
   }
 
   //////// Save methods //////////
@@ -79,11 +69,7 @@ export class BookService {
   deleteBook (book: Book | number): Observable<Book> {
     const id = typeof book === 'number' ? book : book.id;
     const url = `${this.booksUrl}/${id}`;
-
-    return this.http.delete<Book>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted book id=${id}`)),
-      catchError(this.handleError<Book>('deleteBook'))
-    );
+    // FIXME
   }
 
   /** PUT: update the book on the server */

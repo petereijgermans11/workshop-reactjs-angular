@@ -33,28 +33,134 @@ npm install ipaddr.js
 ## Todo:
 - Fix all the bugs before building new features
 
-- Features:
-  - Dashboard view
-    - Display all the books inside the Dashboard
-    - When you click on a book, you should navigate to the detail of that book
-    - Implement the search for the books using Observable (Not trivial)
-      - Delay the call to the API by 300 milliseconds
-      - Once the result is diplayed, clicking on it should navigate to the detail of that book
+**ERROR 1:**
 
-  - Manage books view
-   - Once again, show all the books
-   - CRUD API
-     - Add a new book with a title only
-     - Delete a book by id
-     - Get a book by id
+Uncaught Error: Component AppComponent is not part of any NgModule 
+or the module has not been imported into your module
 
-  - Book Detail view
-    - Implement the save button: It should update the book's title
-    - Implement the goBack button
+# Solution:
+
+Add the following in @NgModule in the ‘declarations-section’:
+
+@NgModule({
+declarations: [
+    AppComponent,
+
+
+———————————
+
+**ERROR 2:**
+
+Unhandled Promise rejection: Template parse errors:
+'router-outlet' is not a known element:
+1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+    <a routerLink="/books" routerLinkActive="active">Manage Books</a>
+  </nav>
+  [ERROR ->]<router-outlet></router-outlet>
+"): ng:///AppModule/AppComponent.html@6:2 ; Zone: <root> ; 
+
+
+# Solution:
+
+Add the following in @NgModule in the ‘imports-section’:
+
+@NgModule({
+  imports: [
+    AppRoutingModule,
+
+
+———--------
+
+**ERROR 3:**
+
+compiler.es5.js:1694 Uncaught Error: Template parse errors:
+Can't bind to 'ngForIn' since it isn't a known property of 'li'. ("
+<hr/>
+<ul class="books">
+  <li [ERROR ->]*ngFor="let book in books | async"
+      [class.selected]="book === selectedBook"
+      (click)="onSe"): ng:///AppModule/BooksComponent.html@10:6
+Property binding ngForIn not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations".
+
+# Solution:
+
+Change the following in the ‘books.component.html’:
+
+Wrong:
+<li *ngFor="let book in books | async"
+
+Right:
+<li *ngFor="let book of books | async"
+
+———————————
+
+**ERROR 4:**
+
+ERROR Error: not implemented
+    at AppService.webpackJsonp.66.AppService.getBooks (app.service.ts:18)
+    at BooksComponent.webpackJsonp.113.BooksComponent.ngOnInit
+
+# Solution:
+
+In the book.service.ts —> implement the method getBooks()
+
+
+    getBooks (): Observable<Book[]> {
+    return this.http.get<Book[]>(this.booksUrl)
+      .pipe(
+        tap(books => this.log(`fetched books`)),
+        catchError(this.handleError('getBooks', []))
+      );
+    }
+
+
+—————————
+
+**ERROR 5:**
+
+ERROR Error: Uncaught (in promise): Error: No provider for Http!
+
+# Solution
+
+Import the following in @NgModule:
+
+  import {HttpModule} from "@angular/http";
+
+And add the following in the ‘imports-section’:
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+
+————
+
+**ERROR 6:**
+
+Fix all onClick events in all templates
+
+# Solution:
+
+>> click --> (click)
+
+
+## TODO:
+
+Implement the following methods in the book.service.ts !!!
+
+getBook(id)
+searchBooks(term)
+addBook(book)
+deleteBook(book)
+
+See for the solution the online Tutorial : ‘Tour of Heroes’ —> https://angular.io/tutorial
+
 
 ## Hints
     - Use Axios in ReactJS. Axios is a Promise based HTTP client for the browser and node.js
-    - In Angular use Promises or Observables (RxJS). See for a detailed solution: https://angular.io/tutorial
-   
+    - In Angular use Observables (RxJS). See for a detailed solution: https://angular.io/tutorial
    
  

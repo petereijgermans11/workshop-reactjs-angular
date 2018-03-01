@@ -11,11 +11,11 @@
 </div>
 
 <ul class="books">
-  <li *ngFor="let book of books">
+  <li *ngFor="let book in books">
     <a routerLink="/detail/{{book.id}}">
       <span class="badge">{{book.id}}</span> {{book.name}}
     </a>
     <button class="delete" title="delete book"
-    (click)="delete(book)">x</button>
+    click="delete(book)">x</button>
   </li>
 </ul>

@@ -21,8 +21,6 @@ import { MessagesComponent }    from './messages/messages.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -32,7 +30,6 @@ import { MessagesComponent }    from './messages/messages.component';
     )
   ],
   declarations: [
-    AppComponent,
     DashboardComponent,
     BooksComponent,
     BookDetailComponent,
