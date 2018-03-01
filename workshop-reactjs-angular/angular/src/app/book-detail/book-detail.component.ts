@@ -28,9 +28,8 @@ export class BookDetailComponent {
   }
 
   save(): void {
-   this.appService.update(this.book)
-    .then(() => this.goBack());
-  }
+    this.appService.update(this.book).subscribe(this.goBack.bind(this));
+   }
 
   goBack(): void {
     this.location.back();

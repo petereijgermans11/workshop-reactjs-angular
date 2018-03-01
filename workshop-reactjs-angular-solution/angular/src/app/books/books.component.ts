@@ -1,47 +1,39 @@
-import {Component, OnInit} from '@angular/core';
-import {Book} from '../types/book';
-import {AppService} from '../services/app.service';
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+
+import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
-  selector: 'bs-books',
-  templateUrl: 'books.template.html',
-  styleUrls: ['books.component.css'],
-  providers: [AppService]
+  selector: 'app-books',
+  templateUrl: './books.component.html',
+  styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  books: Observable<Book[]>;
-  selectedBook: Book;
+  books: Book[];
 
-  constructor(private bookService: AppService, private router: Router) {
+  constructor(private bookService: BookService) { }
+
+  ngOnInit() {
+    this.getBooks();
   }
 
-  ngOnInit(): void {
-    this.books = this.bookService.getBooks();
-    //this.bookService.getBooks().subscribe(bks => this.books = bks);
+  getBooks(): void {
+    this.bookService.getBooks()
+    .subscribe(books => this.books = books);
   }
 
-  add(title: string): void {
-    title = title.trim();
-    if (!title) {
-      return;
-    }
-    // Call the service here and use the result as your new book list.
-    this.books = this.bookService.create(title);
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.bookService.addBook({ name } as Book)
+      .subscribe(book => {
+        this.books.push(book);
+      });
   }
 
   delete(book: Book): void {
-    // Delete the book, and use the result as your new book list.
-    this.books = this.bookService.delete(book.id);
+    this.books = this.books.filter(h => h !== book);
+    this.bookService.deleteBook(book).subscribe();
   }
 
-  onSelect(book: Book): void {
-    this.selectedBook = book;
-  }
-
-  gotoDetail(id: number): void {
-    // The router service will help here
-    this.router.navigateByUrl(`/detail/${id}`);
-  }
 }

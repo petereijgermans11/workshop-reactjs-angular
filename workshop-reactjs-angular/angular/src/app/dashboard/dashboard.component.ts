@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Book } from '../types/book';
-import { AppService } from '../services/app.service';
+import {Component, OnInit} from '@angular/core';
+import {Book} from '../types/book';
+import {AppService} from '../services/app.service';
 
 @Component({
   styleUrls: ['dashboard.component.css'],
@@ -11,9 +11,12 @@ export class DashboardComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor() { }
+  constructor(private bookService: AppService) {
+  }
 
   ngOnInit(): void {
     // Get all the books
+    this.bookService.getBooks().subscribe(bks => this.books = bks);
+    //console.log(this.books);
   }
 }

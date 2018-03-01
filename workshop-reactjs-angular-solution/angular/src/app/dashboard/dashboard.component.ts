@@ -1,22 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {Book} from '../types/book';
-import {AppService} from '../services/app.service';
+import { Component, OnInit } from '@angular/core';
+import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
-  styleUrls: ['dashboard.component.css'],
-  selector: 'bs-dashboard',
-  templateUrl: 'dashboard.template.html'
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-
   books: Book[] = [];
 
-  constructor(private bookService: AppService) {
+  constructor(private bookService: BookService) { }
+
+  ngOnInit() {
+    this.getBooks();
   }
 
-  ngOnInit(): void {
-    // Get all the books
-    this.bookService.getBooks().subscribe(bks => this.books = bks);
-    console.log(this.books);
+  getBooks(): void {
+    this.bookService.getBooks()
+      .subscribe(books => this.books = books.slice(1, 5));
   }
 }

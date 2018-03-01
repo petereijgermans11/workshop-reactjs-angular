@@ -1,40 +1,47 @@
-import { Injectable } from '@angular/core';
-import { Book } from '../types/book';
-import { Http, Headers } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Book} from '../types/book';
+import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMapTo';
 
 @Injectable()
 export class AppService {
   bookApiUrl: string = 'app/books';
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor() {}
-
-  getBooks(): Promise<Book[]> {
-    throw new Error('not implemented');
+  constructor(private http: Http) {
   }
 
-  update(book: Book): Promise<Book> {
-    const url = `${this.bookApiUrl}/${book.id}`;
+  getBooks(): Observable<Book[]> {
     throw new Error('not implemented');
+    //return this.http.get(this.bookApiUrl).map(r => r.json().data as Book[]);
   }
 
-  create(title: string): Promise<Book> {
+  getBook(id: number): Observable<Book> {
     throw new Error('not implemented');
+    //return this.http.get(this.bookApiUrl + '/' + id).map(r => r.json().data as Book);
   }
 
-  delete(id: number): Promise<void> {
-    const url = `${this.bookApiUrl}/${id}`;
+  // Adds a new book and re-fetch the list of books.
+  create(title: string): Observable<Book[]> {
     throw new Error('not implemented');
+    //return this.http.post(this.bookApiUrl, {title}).switchMapTo(this.getBooks());
   }
 
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
+  // Delete a book and re-fetch the list of books.
+  delete(id: number): Observable<Book[]> {
+    throw new Error('not implemented');
+    //const url = `${this.bookApiUrl}/${id}`;
+    //return this.http.delete(url).switchMapTo(this.getBooks());
   }
 
-  getBook(id: number): Promise<Book> {
+  // Update a book and re-fetch the list of books.
+  update({id, title}): Observable<Book[]> {
     throw new Error('not implemented');
+    //const url = `${this.bookApiUrl}/${id}`;
+    //console.log(url);
+    //return this.http.post(url, {title}).switchMapTo(this.getBooks());
   }
 }

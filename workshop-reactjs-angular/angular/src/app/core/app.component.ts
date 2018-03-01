@@ -17,6 +17,6 @@ export class AppComponent {
   title = 'Amazon by Hackages';
   
   ngOnInit(){
-    console.log(Observable)
+    //console.log(Observable)
   }
 }
