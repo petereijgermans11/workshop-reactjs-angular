@@ -42,9 +42,11 @@ or the module has not been imported into your module
 
 Add the following in @NgModule in the ‘declarations-section’:
 
+```
 @NgModule({
 declarations: [
     AppComponent,
+```
 
 
 ———————————
@@ -65,10 +67,11 @@ Unhandled Promise rejection: Template parse errors:
 
 Add the following in @NgModule in the ‘imports-section’:
 
+```
 @NgModule({
   imports: [
     AppRoutingModule,
-
+```
 
 ———--------
 
@@ -87,11 +90,13 @@ Property binding ngForIn not used by any directive on an embedded template. Make
 
 Change the following in the ‘books.component.html’:
 
+```
 Wrong:
 li *ngFor="let book in books | async"
 
 Right:
 li *ngFor="let book of books | async"
+```
 
 ———————————
 
@@ -129,12 +134,14 @@ Import the following in @NgModule:
 
 And add the following in the ‘imports-section’:
 
+```
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
   ],
+```
 
 ————
 
@@ -144,17 +151,19 @@ Fix all onClick events in all templates
 
 **Solution:**
 
->> click --> (click)
+click --> (click)
 
 
 ## TODO:
 
 Implement the following methods in the book.service.ts !!!
 
+```
 getBook(id)
 searchBooks(term)
 addBook(book)
 deleteBook(book)
+```
 
 See for the solution the online Tutorial : ‘Tour of Heroes’ —> https://angular.io/tutorial
 
