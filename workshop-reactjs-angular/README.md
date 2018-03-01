@@ -103,7 +103,7 @@ li *ngFor="let book of books | async"
 # ERROR 4:
 
 ERROR Error: not implemented
-    at AppService.webpackJsonp.66.AppService.getBooks (app.service.ts:18)
+    at BookService.webpackJsonp.66.BookService.getBooks (app.service.ts:18)
     at BooksComponent.webpackJsonp.113.BooksComponent.ngOnInit
 
 **Solution:**
