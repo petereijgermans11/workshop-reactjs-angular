@@ -17,7 +17,9 @@ Development Server is running on http://localhost:3000/
 
 # If you'd rather use Angular
 cd ./angular
-yarn start
+npm install -g @angular/cli
+npm install
+ng serve --open
 
 Development Server is running on http://localhost:4200
 

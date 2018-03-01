@@ -1,37 +1,40 @@
-// Keep the Input import for now, we'll remove it later:
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
-import 'rxjs/add/operator/switchMap';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { AppService } from '../services/app.service';
-import { Book } from '../types/book';
+import { Book }         from '../book';
+import { BookService }  from '../book.service';
 
 @Component({
-  selector: 'bs-book-detail',
-  styleUrls: ['book-detail.component.css'],
-  templateUrl: 'book-detail.template.html'
+  selector: 'app-book-detail',
+  templateUrl: './book-detail.component.html',
+  styleUrls: [ './book-detail.component.css' ]
 })
-export class BookDetailComponent {
-  @Input()
-  book: Book;
+export class BookDetailComponent implements OnInit {
+  @Input() book: Book;
+
   constructor(
-      private route: ActivatedRoute,
-      private location: Location,
-      private appService: AppService
+    private route: ActivatedRoute,
+    private bookService: BookService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-    .switchMap((params: Params) => this.appService.getBook(+params['id']))
-    .subscribe(book => this.book = book);
+    this.getBook();
   }
 
-  save(): void {
-    this.appService.update(this.book).subscribe(this.goBack.bind(this));
-   }
+  getBook(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.bookService.getBook(id)
+      .subscribe(book => this.book = book);
+  }
 
   goBack(): void {
     this.location.back();
+  }
+
+ save(): void {
+    this.bookService.updateBook(this.book)
+      .subscribe(() => this.goBack());
   }
 }

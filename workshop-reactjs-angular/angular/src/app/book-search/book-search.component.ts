@@ -1,31 +1,42 @@
-import {Component, OnInit} from '@angular/core';
-import {Router}            from '@angular/router';
-import {Observable}        from 'rxjs/Observable';
-import {Subject}           from 'rxjs/Subject';
-import {SearchService} from '../services/search.service';
-import {Book} from '../types/book';
+import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import { Subject }    from 'rxjs/Subject';
+import { of }         from 'rxjs/observable/of';
+
+import {
+   debounceTime, distinctUntilChanged, switchMap
+ } from 'rxjs/operators';
+
+import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
-  selector: 'bs-book-search',
-  templateUrl: 'book-search.template.html',
-  styleUrls: ['book-search.component.css'],
-  providers: [SearchService]
+  selector: 'app-book-search',
+  templateUrl: './book-search.component.html',
+  styleUrls: [ './book-search.component.css' ]
 })
 export class BookSearchComponent implements OnInit {
-  term$: Subject<string> = new Subject<string>();
-  books: Observable<Book[]>;
+  books$: Observable<Book[]>;
+  private searchTerms = new Subject<string>();
 
-  constructor(private searchService: SearchService,
-              private router: Router) {
+  constructor(private bookService: BookService) {}
+
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    this.searchTerms.next(term);
   }
 
   ngOnInit(): void {
-    // Use the search service to monitor the results for the input value.
-    this.books = this.searchService.search(this.term$);
-  }
+    this.books$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
 
-  gotoDetail(book: Book): void {
-    // The router service will help here
-    this.router.navigateByUrl(`/detail/${book.id}`);
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.bookService.searchBooks(term)),
+    );
   }
 }
