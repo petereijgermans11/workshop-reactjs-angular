@@ -59,10 +59,7 @@ export class BookService {
 
   /** POST: add a new book to the server */
   addBook (book: Book): Observable<Book> {
-    return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
-      tap((book: Book) => this.log(`added book w/ id=${book.id}`)),
-      catchError(this.handleError<Book>('addBook'))
-    );
+    // FIXME
   }
 
   /** DELETE: delete the book from the server */
