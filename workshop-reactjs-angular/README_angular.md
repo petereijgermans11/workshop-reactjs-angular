@@ -9,12 +9,6 @@ Using either react or angular, choose your weapon ⚔
 ```bash
 git clone https://github.com/petereijgermans11/workshop-reactjs-angular.git
 
-# If you want to use React
-cd ./react-app
-yarn start
-
-Development Server is running on http://localhost:3000/
-
 # If you'd rather use Angular
 cd ./angular
 npm install -g @angular/cli
