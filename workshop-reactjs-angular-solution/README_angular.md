@@ -163,7 +163,6 @@ See for the solution the online Tutorial : ‘Tour of Heroes’ —> https://ang
 
 
 ## Hints
-    - Use Axios in ReactJS. Axios is a Promise based HTTP client for the browser and node.js
     - In Angular use Observables (RxJS). See for a detailed solution: https://angular.io/tutorial
    
  
