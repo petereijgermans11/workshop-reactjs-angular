@@ -27,6 +27,7 @@ npm install ipaddr.js
 ## Todo:
 - Fix all the bugs before building new features
 
+
 # ERROR 1:
 
 Uncaught Error: Component AppComponent is not part of any NgModule 
@@ -47,15 +48,16 @@ declarations: [
 
 # ERROR 2:
 
-Unhandled Promise rejection: Template parse errors:
+Uncaught Error: Template parse errors:
 'router-outlet' is not a known element:
 1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
 2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-    <a routerLink="/books" routerLinkActive="active">Manage Books</a>
-  </nav>
-  [ERROR ->]<router-outlet></router-outlet>
-"): ng:///AppModule/AppComponent.html@6:2 ; Zone: <root> ; 
-
+  <a routerLink="/books">Books</a>
+</nav>
+[ERROR ->]<router-outlet></router-outlet>
+<app-messages></app-messages>
+"): ng:///AppModule/AppComponent.html@5:0
+    at syntaxError (compiler.js:466)
 
 **Solution:**
 
@@ -71,14 +73,14 @@ Add the following in @NgModule in the ‘imports-section’:
 
 # ERROR 3:
 
-compiler.es5.js:1694 Uncaught Error: Template parse errors:
+Uncaught Error: Template parse errors:
 Can't bind to 'ngForIn' since it isn't a known property of 'li'. ("
-<hr/>
+
 <ul class="books">
-  <li [ERROR ->]*ngFor="let book in books | async"
-      [class.selected]="book === selectedBook"
-      (click)="onSe"): ng:///AppModule/BooksComponent.html@10:6
-Property binding ngForIn not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations".
+  <li [ERROR ->]*ngFor="let book in books">
+    <a routerLink="/detail/{{book.id}}">
+      <span class="badge">{{book"): ng:///AppModule/BooksComponent.html@13:6
+Property binding ngForIn not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations". ("
 
 **Solution:**
 
@@ -96,9 +98,28 @@ li *ngFor="let book of books | async"
 
 # ERROR 4:
 
-ERROR Error: not implemented
-    at BookService.webpackJsonp.66.BookService.getBooks (app.service.ts:18)
-    at BooksComponent.webpackJsonp.113.BooksComponent.ngOnInit
+ERROR Error: Uncaught (in promise): Error: StaticInjectorError[HttpClient]: 
+  StaticInjectorError[HttpClient]: 
+    NullInjectorError: No provider for HttpClient!
+
+**Solution:**
+
+Add the following in the ‘imports-section’:
+
+```
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+```
+
+————
+
+# ERROR 5:
+
+The books are not shown on the page!
 
 **Solution:**
 
@@ -112,40 +133,29 @@ In the book.service.ts —> implement the method getBooks()
         catchError(this.handleError('getBooks', []))
       );
     }
+    
+—————————
+
+# ERROR 6:
+
+The names of the books are not shown on the Dashboard!
+
+**Solution:**
+
+<h4>book.name</h4> --> (<h4>{{book.name}}</h4>
+
 
 
 —————————
 
-# ERROR 5:
+# ERROR 7:
 
-ERROR Error: Uncaught (in promise): Error: No provider for Http!
-
-**Solution:**
-
-Import the following in @NgModule:
-
-  import {HttpModule} from "@angular/http";
-
-And add the following in the ‘imports-section’:
-
-```
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-  ],
-```
-
-————
-
-# ERROR 6:
-
-Fix all onClick events in all templates
+Fix all onClick events in all HTML-templates
 
 **Solution:**
 
 click --> (click)
+
 
 
 ## TODO:

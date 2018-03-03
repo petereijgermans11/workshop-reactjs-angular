@@ -104,11 +104,7 @@ ERROR Error: Uncaught (in promise): Error: StaticInjectorError[HttpClient]:
 
 **Solution:**
 
-Import the following in @NgModule:
-
-  import {HttpModule} from "@angular/http";
-
-And add the following in the ‘imports-section’:
+Add the following in the ‘imports-section’:
 
 ```
 @NgModule({
