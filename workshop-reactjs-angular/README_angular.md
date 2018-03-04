@@ -142,7 +142,7 @@ The names of the books are not shown on the Dashboard!
 
 **Solution:**
 
-<h4>book.name</h4> --> (<h4>{{book.name}}</h4>
+<h4>book.name</h4> --> <h4>{{book.name}}</h4>
 
 
 
