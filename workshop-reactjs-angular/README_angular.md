@@ -158,7 +158,7 @@ click --> (click)
 
 
 
-## TODO:
+# TODO:
 
 Implement the following methods in the book.service.ts !!!
 
@@ -169,9 +169,9 @@ addBook(book)
 deleteBook(book)
 ```
 
-**Running end-to-end tests**
+# Running end-to-end tests
 
-Run ng e2e to execute the end-to-end tests via Protractor. Before running the tests make sure you are serving the app via ng serve.
+Run **ng e2e** to execute the end-to-end tests via Protractor. Before running the tests make sure you are serving the app via: **ng serve**.
 
 See for the solution the online Tutorial : ‘Tour of Heroes’ —> https://angular.io/tutorial
 
