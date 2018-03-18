@@ -18,6 +18,12 @@ export class Books extends React.Component {
     this.refreshList();
   }
 
+  resetTitle = () => {
+    this.setState({
+      inputContent: ''
+    })
+  }
+
   refreshList = () => {
     // You can get the book list @ http://localhost:5000/books
     axios.get("http://localhost:5000/books").then((response) => {
@@ -29,9 +35,17 @@ export class Books extends React.Component {
        }); 
   };
 
-  add = () => {
+  add = (titlenew) => {
     // You should add your new book to http://localhost:5000/books json server will create an id for you if you dont provide one
-    axios.put("http://localhost:5000/books");  
+    console.log("add title: " + titlenew);
+    if (titlenew) {
+      axios.post('http://localhost:5000/books', {id: undefined, title: titlenew, category: 'web'})
+               .then((response) => {
+                this.refreshList();
+                this.resetTitle()
+       }); 
+       
+    }
 };
 
   remove = (bookId) => {
@@ -41,8 +55,8 @@ export class Books extends React.Component {
           console.log(response.status); // ex.: 200
           
           this.setState({
-             selectedBook: false
-             
+             selectedBook: false,
+             books: this.state.books.filter(e => e.id !== bookId)
            })
            // filter from list
 
@@ -58,10 +72,10 @@ export class Books extends React.Component {
           <label>Book's title:</label>
           <input
             type="text"
-            value="this.state.inputContent"
+            value={this.state.inputContent}
             onChange={(e) => this.setState({inputContent: e.target.value})}
           />
-          <button onClick={this.add}>
+          <button onClick={() => this.add(this.state.inputContent)}>
             Add
           </button>
         </div>
