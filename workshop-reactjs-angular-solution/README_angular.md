@@ -138,7 +138,7 @@ In the book.service.ts —> implement the method getBooks()
 
 # ERROR 6:
 
-The names of the books are not shown on the Dashboard!
+The names of the books are not shown on the 'dashboard.component.html' !
 
 **Solution:**
 
