@@ -88,10 +88,10 @@ Change the following in the ‘books.component.html’:
 
 ```
 Wrong:
-li *ngFor="let book in books | async"
+li *ngFor="let book in books"
 
 Right:
-li *ngFor="let book of books | async"
+li *ngFor="let book of books"
 ```
 
 ———————————
@@ -109,6 +109,7 @@ Add the following in the 'AppModule' in @NgModule in the ‘imports-section’:
 ```
 @NgModule({
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
