@@ -160,13 +160,13 @@ click --> (click)
 
 # TODO:
 
-Implement the following methods in the book.service.ts !!!
+Implement the following methods in the 'book.service.ts' !!!
 
 ```
 getBook(id)
-searchBooks(term)
 addBook(book)
 deleteBook(book)
+searchBooks(term)
 ```
 
 # Running end-to-end tests
