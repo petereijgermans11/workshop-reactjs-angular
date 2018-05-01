@@ -35,7 +35,7 @@ or the module has not been imported into your module
 
 **Solution:**
 
-Add the following in @NgModule in the ‘declarations-section’:
+Add the following in the 'AppModule' in @NgModule in the ‘declarations-section’:
 
 ```
 @NgModule({
@@ -61,7 +61,7 @@ Uncaught Error: Template parse errors:
 
 **Solution:**
 
-Add the following in @NgModule in the ‘imports-section’:
+Add the following in the 'AppModule' in @NgModule in the ‘imports-section’:
 
 ```
 @NgModule({
@@ -104,7 +104,7 @@ ERROR Error: Uncaught (in promise): Error: StaticInjectorError[HttpClient]:
 
 **Solution:**
 
-Add the following in the ‘imports-section’:
+Add the following in the 'AppModule' in @NgModule in the ‘imports-section’:
 
 ```
 @NgModule({
