@@ -26,13 +26,12 @@ Failed to compile.
 Error in ./src/Components/Bookdetail.jsx
 Syntax error: Unexpected token, expected , (54:36)
 
-  52 |                     </div>
-  53 |                     <button onClick="this.goBack">Back</button>
-> 54 |                     <button onClick=this.save>Save</button>
-     |                                     ^
-  55 |                 </div>
-  56 |                 :
-  57 |                 <div />
+                  </div>
+                    <button onClick="this.goBack">Back</button>
+                    <button onClick=this.save>Save</button>
+                                     ^
+                  </div>
+                
 
 
   **Solution:**
@@ -44,8 +43,8 @@ Syntax error: Unexpected token, expected , (54:36)
 
 All JavaScript expressions in the JSX has NO curly braces, example:
 
-render(){
-      return <h1>Hello, this.props.name</h1>;
+    render(){
+           return <h1>Hello, this.props.name </h1>;
 
 **Solution:**
 
@@ -106,6 +105,7 @@ printWarnings @ webpackHotDevClient.js:198
 
 **Solution:**
 Use Axios in the BookSearch.jsx
+
 
 
 - Features:
