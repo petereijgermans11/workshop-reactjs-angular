@@ -45,12 +45,15 @@ All JavaScript expressions in the JSX has NO curly braces, example:
 
     render(){
            return <h1>Hello, this.props.name </h1>;
+    }
 
 **Solution:**
 
 You have to embed any JavaScript expression in JSX by wrapping it in curly braces:
 
-      return <h1>Hello, { this.props.name }</h1>;
+    render(){
+            return <h1>Hello, { this.props.name }</h1>;
+    }
 
 
 # ERROR 3:
