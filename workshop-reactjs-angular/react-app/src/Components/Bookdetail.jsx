@@ -20,6 +20,7 @@ export class BookDetail extends Component {
 
     fetchBook = (id) => {
         // You can get the book details at http://localhost:5000/books/id
+        // axios.get("http://localhost:5000/books/" + ....).then(....)
     };
 
     update = (event) =>
@@ -32,7 +33,8 @@ export class BookDetail extends Component {
 
     save = () => {
         // You can update the book details at http://localhost:5000/books/id
-    };
+        // axios.put('http://localhost:5000/books/' + this.state.book.id, this.state.book).then(....)
+  };
 
     goBack = () => {
         this.props.history.goBack();

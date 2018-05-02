@@ -16,7 +16,8 @@ export class Dashboard extends React.Component {
 
   componentDidMount(){
     // You should fetch de books from http://localhost:5000/books
-    // and store them in your state
+    // and store them in your state:
+    // axios.get("http://localhost:5000/books").then(...)
   }
 
   render() {

@@ -24,6 +24,7 @@ export class Books extends React.Component {
 
   add = () => {
     // You should add your new book to http://localhost:5000/books json server will create an id for you if you dont provide one
+    // axios.post('http://localhost:5000/books', {id: undefined, title: titlenew, category: 'web'}).then(....)
   };
 
   remove = (bookId) => {

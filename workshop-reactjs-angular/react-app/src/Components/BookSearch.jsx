@@ -13,7 +13,8 @@ export class BookSearch extends Component {
 
     search = (event) => {
         // You can fetch the books at this url
-        // http://localhost:5000/books?q=yourSearchTerm
+        // http://localhost:5000/books?q=yourSearchTerm 
+        // yourSearchTerm is: event.target.value
     };
 
     render(){
