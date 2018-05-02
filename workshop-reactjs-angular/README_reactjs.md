@@ -51,7 +51,61 @@ render(){
 
 You have to embed any JavaScript expression in JSX by wrapping it in curly braces:
 
-      return <h1>Hello, {this.props.name}</h1>;
+      return <h1>Hello, { this.props.name }</h1>;
+
+
+# ERROR 3:
+
+webpackHotDevClient.js:198 ./src/Components/Books.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Books.jsx
+  2:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the Books.jsx
+
+# ERROR 4:
+webpackHotDevClient.js:198 ./src/Components/Bookdetail.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Bookdetail.jsx
+  2:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the Bookdetail.jsx
+
+# ERROR 5:
+webpackHotDevClient.js:198 ./src/Components/Dashboard.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Dashboard.jsx
+  3:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the Dashboard.jsx
+
+# ERROR 6:
+webpackHotDevClient.js:198 ./src/Components/BookSearch.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/BookSearch.jsx
+  2:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the BookSearch.jsx
 
 
 - Features:
