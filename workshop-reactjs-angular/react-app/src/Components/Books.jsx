@@ -46,7 +46,7 @@ export class Books extends React.Component {
             value="this.state.inputContent"
             onChange={(e) => this.setState({inputContent: e.target.value})}
           />
-          <button onClick={this.add}>
+          <button onClick={() => this.add(this.state.inputContent)}>
             Add
           </button>
         </div>
