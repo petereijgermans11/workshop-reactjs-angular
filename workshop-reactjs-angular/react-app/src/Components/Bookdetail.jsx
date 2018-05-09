@@ -19,8 +19,13 @@ export class BookDetail extends Component {
     }
 
     fetchBook = (id) => {
-        // You can get the book details at http://localhost:5000/books/id
-        // axios.get("http://localhost:5000/books/" + ....).then(....)
+       // You should fetch the book from http://localhost:5000/books
+       // and store them in your state:
+       //
+       // axios.get("http://localhost:5000/books/" + id)
+       //  .then((response) => {
+       //  <SET THE BOOK IN THE STATE>
+       //  }); 
     };
 
     update = (event) =>
@@ -33,7 +38,8 @@ export class BookDetail extends Component {
 
     save = () => {
         // You can update the book details at http://localhost:5000/books/id
-        // axios.put('http://localhost:5000/books/' + this.state.book.id, this.state.book).then(....)
+        // axios.put('http://localhost:5000/books/' + this.state.book.id, this.state.book)
+        // .then(....)
   };
 
     goBack = () => {
@@ -50,7 +56,7 @@ export class BookDetail extends Component {
                         <label>id: </label>{book.id}</div>
                     <div>
                         <label>Title: </label>
-                        <input value="this.state.book.title" onChange={this.update()} placeholder="title"/>
+                        <input value={this.state.book.title} onChange={this.update} placeholder="title"/>
                     </div>
                     <button onClick="this.goBack">Back</button>
                     <button onClick=this.save>Save</button>
