@@ -20,15 +20,19 @@ export class Books extends React.Component {
 
   refreshList = () => {
     // You can get the book list @ http://localhost:5000/books
+    //   <SET THE BOOKS IN THE STATE>
   };
 
   add = () => {
     // You should add your new book to http://localhost:5000/books json server will create an id for you if you dont provide one
-    // axios.post('http://localhost:5000/books', {id: undefined, title: titlenew, category: 'web'}).then(....)
+    // axios.post('http://localhost:5000/books', {id: undefined, title: titlenew, category: 'web'})
+    //   <REFRESH THE LIST>
   };
 
   remove = (bookId) => {
    // You should remove the book from  http://localhost:5000/books/bookId
+   // axios.delete(...)
+   //    <FILTER THE BOOK FROM THE LIST OF BOOKS>
   };
 
   render() {

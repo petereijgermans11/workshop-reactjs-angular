@@ -24,7 +24,7 @@ export class BookDetail extends Component {
        //
        // axios.get("http://localhost:5000/books/" + id)
        //  .then((response) => {
-       //  <SET THE BOOK IN THE STATE>
+       //     <TODO: SET THE BOOK IN THE STATE>
        //  }); 
     };
 
@@ -38,9 +38,10 @@ export class BookDetail extends Component {
 
     save = () => {
         // You can update the book details at http://localhost:5000/books/id
-        // axios.put('http://localhost:5000/books/' + this.state.book.id, this.state.book)
+        // axios.put('http://localhost:5000/books/' + this.state.book.id, .....)
         // .then(....)
-  };
+        //   <GO BACK TO LIST OF BOOKS>
+     };
 
     goBack = () => {
         this.props.history.goBack();
