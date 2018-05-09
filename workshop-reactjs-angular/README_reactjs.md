@@ -41,7 +41,7 @@ Syntax error: Unexpected token, expected , (54:36)
 
 # ERROR 2:   
 
-All JavaScript expressions in the JSX has NO curly braces, example:
+All JavaScript expressions in the render()-functions in all JSX-files has NO curly braces, example:
 
     render(){
            return <h1>Hello, this.props.name </h1>;
@@ -49,7 +49,7 @@ All JavaScript expressions in the JSX has NO curly braces, example:
 
 **Solution:**
 
-You have to embed any JavaScript expression in JSX by wrapping it in curly braces:
+You have to embed any JavaScript expression in all JSX-files by wrapping it in curly braces:
 
     render(){
             return <h1>Hello, { this.props.name }</h1>;
@@ -57,6 +57,32 @@ You have to embed any JavaScript expression in JSX by wrapping it in curly bra
 
 
 # ERROR 3:
+webpackHotDevClient.js:198 ./src/Components/Dashboard.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Dashboard.jsx
+  3:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the Dashboard.jsx (see example on the slides)
+
+# ERROR 4:
+webpackHotDevClient.js:198 ./src/Components/BookSearch.jsx
+
+/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/BookSearch.jsx
+  2:8  warning  'axios' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+printWarnings @ webpackHotDevClient.js:198
+
+**Solution:**
+Use Axios in the BookSearch.jsx (see example on the slides)
+
+# ERROR 5:
 
 webpackHotDevClient.js:198 ./src/Components/Books.jsx
 
@@ -70,7 +96,7 @@ printWarnings @ webpackHotDevClient.js:198
 **Solution:**
 Use Axios in the Books.jsx
 
-# ERROR 4:
+# ERROR 6:
 webpackHotDevClient.js:198 ./src/Components/Bookdetail.jsx
 
 /Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Bookdetail.jsx
@@ -82,54 +108,4 @@ printWarnings @ webpackHotDevClient.js:198
 
 **Solution:**
 Use Axios in the Bookdetail.jsx
-
-# ERROR 5:
-webpackHotDevClient.js:198 ./src/Components/Dashboard.jsx
-
-/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/Dashboard.jsx
-  3:8  warning  'axios' is defined but never used  no-unused-vars
-
-✖ 1 problem (0 errors, 1 warning)
-
-printWarnings @ webpackHotDevClient.js:198
-
-**Solution:**
-Use Axios in the Dashboard.jsx
-
-# ERROR 6:
-webpackHotDevClient.js:198 ./src/Components/BookSearch.jsx
-
-/Users/pei20063/Desktop/WorkshopReactJSAngular/workshop-reactjs-angular/workshop-reactjs-angular/react-app/src/Components/BookSearch.jsx
-  2:8  warning  'axios' is defined but never used  no-unused-vars
-
-✖ 1 problem (0 errors, 1 warning)
-
-printWarnings @ webpackHotDevClient.js:198
-
-**Solution:**
-Use Axios in the BookSearch.jsx
-
-
-
-- Features:
-  - Dashboard view
-    - Display all the books inside the Dashboard
-    - When you click on a book, you should navigate to the detail of that book
-    - Implement the search for the books using Observable (Not trivial)
-      - Delay the call to the API by 300 milliseconds
-      - Once the result is diplayed, clicking on it should navigate to the detail of that book
-
-  - Manage books view
-   - Once again, show all the books
-   - CRUD API
-     - Add a new book with a title only
-     - Delete a book by id
-     - Get a book by id
-
-  - Book Detail view
-    - Implement the save button: It should update the book's title
-    - Implement the goBack button
-
-## Hints
-    - Use Axios in ReactJS. Axios is a Promise based HTTP client for the browser and node.js   
  
