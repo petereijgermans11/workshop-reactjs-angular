@@ -10,7 +10,7 @@ export class App extends Component {
     return (
       <Router>
         <div>
-          <h1>Amazon by Hackages</h1>
+          <h1>Amazon by Ordina</h1>
           <nav>
             <Link to="/dashboard">Books</Link>
             <Link to="/books">Manage Books</Link>
