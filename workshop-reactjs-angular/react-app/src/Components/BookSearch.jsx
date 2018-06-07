@@ -12,7 +12,7 @@ export class BookSearch extends Component {
     }
 
     search = (event) => {
-        // You can fetch the books at this url
+        // You can fetch the books at this url and store them in your state:
         // http://localhost:5000/books?q=yourSearchTerm 
         // yourSearchTerm is: event.target.value
     };

@@ -31,7 +31,7 @@ export class Dashboard extends React.Component {
         <div className="grid grid-pad">
 
           {this.state.books.map(book => (
-            <Link key={book.id} to={`/detail/book.id`} className="col-1-4">
+            <Link key="book.id" to={`/detail/book.id`} className="col-1-4">
               <div className="module hero">
                 <h4>{book.title}</h4>
               </div>
